@@ -9,7 +9,11 @@ namespace ConsoleApp2
             Car car = new Car("Mercedes-Benz", "AMG", 32, 21);
             car.DisplayInfo();
 
-
+            car.Ride(3);
+            car.Ride(13);
+            car.Refuel(30);
+            car.DisplayInfo();
+            car.Ride(13);
         }
     }
 }

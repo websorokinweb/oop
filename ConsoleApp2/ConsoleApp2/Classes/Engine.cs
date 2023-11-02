@@ -30,9 +30,7 @@ namespace ConsoleApp2.Classes
         }
         public void Work(float distance)
         {
-            this.fuelAmount -= this.lkm;
-            Console.WriteLine("burning fuel");
+            this.fuelAmount -= this.lkm / 100 * distance;
         }
-        
     }
 }
