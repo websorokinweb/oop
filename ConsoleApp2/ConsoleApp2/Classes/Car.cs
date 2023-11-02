@@ -37,14 +37,22 @@ namespace ConsoleApp2.Classes
         }
         public void Ride(float distance)
         {
-            Console.WriteLine("\n===");
-            Console.WriteLine("Jadę");
+            
 
             float remainedDistance = distance;
             if (this.engine.fuelAmount >= this.engine.lkm / 100 * distance) {
                 this.engine.Work(distance);
-                Thread.Sleep((int)Math.Ceiling(distance * 100));
-                Console.WriteLine($"Jestem, zostało {this.engine.fuelAmount} l paliwa");
+
+                for (int i = 0; i <= 10; i++)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nJadę\n");
+
+                    Console.WriteLine($"{new string('=', i)}>{new string('=', 10 - i)}");
+                    Thread.Sleep((int)Math.Ceiling((distance * 100) / 10));
+
+                }
+                Console.WriteLine($"\nJestem, zostało {this.engine.fuelAmount} l paliwa");
             }
             else
             {
@@ -55,7 +63,6 @@ namespace ConsoleApp2.Classes
                 Console.WriteLine($"Benzyna się skończyła, zostało pokonać jeszcze {remainedDistance} km. Dotankuj samochód");
             }
 
-            Console.WriteLine("===\n");
         }
         public void Refuel(float fuelAmount)
         {
