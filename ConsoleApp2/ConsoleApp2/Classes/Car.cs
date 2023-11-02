@@ -46,21 +46,33 @@ namespace ConsoleApp2.Classes
                 for (int i = 0; i <= 10; i++)
                 {
                     Console.Clear();
-                    Console.WriteLine("\nJadę\n");
+                    Console.WriteLine("\nJadę...\n");
 
                     Console.WriteLine($"{new string('=', i)}>{new string('=', 10 - i)}");
                     Thread.Sleep((int)Math.Ceiling((distance * 100) / 10));
-
                 }
                 Console.WriteLine($"\nJestem, zostało {this.engine.fuelAmount} l paliwa");
             }
             else
             {
                 float passedDistance = this.engine.fuelAmount / (this.engine.lkm / 100);
+
                 remainedDistance -= passedDistance;
+                float passedInPercents = passedDistance / (distance / 100);
+                int passedInPercentsCeiledTo10 = ((int)Math.Round(passedInPercents / 10.0)) * 10;
+                Console.WriteLine($"Pokonano drogi {passedInPercentsCeiledTo10}");
+
+                for (int i = 0; i <= 10; i++)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nJadę...\n");
+
+                    Console.WriteLine($"{new string('=', i)}>{new string('=', 10 - i)}{new string('=', 10 - passedInPercentsCeiledTo10 / 10)}");
+                    Thread.Sleep((int)Math.Ceiling((distance * 100) / 10));
+                }
 
                 Thread.Sleep((int)Math.Ceiling(passedDistance * 100));
-                Console.WriteLine($"Benzyna się skończyła, zostało pokonać jeszcze {remainedDistance} km. Dotankuj samochód");
+                Console.WriteLine($"\nBenzyna się skończyła, zostało pokonać jeszcze {remainedDistance} km. Dotankuj samochód");
             }
 
         }

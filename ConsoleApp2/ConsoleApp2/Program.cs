@@ -11,9 +11,9 @@ namespace ConsoleApp2
 
             car.Ride(3);
             car.Ride(13);
-            car.Refuel(30);
-            car.DisplayInfo();
-            car.Ride(13);
+            //car.Refuel(30);
+            //car.DisplayInfo();
+            //car.Ride(13);
         }
     }
 }
