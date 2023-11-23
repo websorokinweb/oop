@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace person.Classes
 {
@@ -26,14 +27,20 @@ namespace person.Classes
 
         public string getInfo()
         {
-            return $"{getFullName()}\n{address.getAddress()}";
+            if(this.address != null)
+            {
+                return $"{getFullName()}\n{address.getAddress()}";
+            }
+            return $"{getFullName()}";
         }
-
-        public Person(string name, string surname, DateTime dateOfBirth, Address address)
+        public Person(string name, string surname, DateTime dateOfBirth)
         {
             this.name = name;
             this.surname = surname;
             this.dateOfBirth = dateOfBirth;
+        }
+        public Person(string name, string surname, DateTime dateOfBirth, Address address): this(name, surname, dateOfBirth)
+        {
             this.address = address;
         }
     }
