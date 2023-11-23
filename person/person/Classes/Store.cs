@@ -8,8 +8,8 @@ namespace person.Classes
 {
     internal class Store
     {
-        public List<Person> persons = new List<Person> { };
-        public void AddUser()
+        public List<Person> users = new List<Person> { };
+        public void AddUser(string userType)
         {
             Console.WriteLine("Podaj imię");
             string name = Console.ReadLine();
@@ -18,26 +18,53 @@ namespace person.Classes
             Console.WriteLine("Podaj datę urodzenia (RRRR-MM-DD):");
             DateTime dateOfBirth = DateTime.Parse(Console.ReadLine());
 
-            persons.Add(new Person(name, surname, dateOfBirth));
+            if (userType == "student")
+            {
+                Console.WriteLine("Podaj indeks studentu");
+                string studentNumber = Console.ReadLine();
+                users.Add(new Student(name, surname, dateOfBirth, studentNumber));
+            }
+            else if (userType == "teacher")
+            {
+                Console.WriteLine("Podaj pzedmioty (przez przecinek)");
+                string subjects = Console.ReadLine();
+                List<string> subjectsFormatted = subjects.Split(',').ToList();
+                users.Add(new Teacher(name, surname, dateOfBirth, subjectsFormatted));
+            }
+            else
+            {
+                users.Add(new Person(name, surname, dateOfBirth));
+            }
+
             Console.WriteLine("\nUżytkownik został dodany!");
         }
         public void RemoveAllUsers()
         {
-            this.persons.Clear();
+            this.users.Clear();
             Console.WriteLine("\nWszyscy użytkownicy zostały usunięci");
         }
         public void DisplayUsers()
         {
-            if (persons.Count == 0)
+            if (users.Count == 0)
             {
                 Console.WriteLine("\nNie ma żadnych użytkowników");
             }
             else
             {
                 Console.Clear();
-                foreach (Person person in persons)
+                foreach (Person user in users)
                 {
-                    Console.WriteLine(person.getInfo());
+                    if(user is Student) {
+                        Console.WriteLine(((Student)user).getInfo());
+                    }
+                    else if (user is Teacher)
+                    {
+                        Console.WriteLine(((Teacher)user).getInfo());
+                    }
+                    else
+                    {
+                        Console.WriteLine(user.getInfo());
+                    }
                 }
             }
         }

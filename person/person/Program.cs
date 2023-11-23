@@ -28,15 +28,27 @@ namespace person
                 switch (chosenOption)
                 {
                     case 1:
-                        store.AddUser();
+                        store.AddUser("person");
                         break;
                     case 2:
-                        store.DisplayUsers();
+                        store.AddUser("student");
                         break;
                     case 3:
-                        store.RemoveAllUsers();
+                        store.AddUser("teacher");
                         break;
                     case 4:
+                        store.DisplayUsers();
+                        break;
+                    case 5:
+                        store.DisplayUsers();
+                        break;
+                    case 6:
+                        store.DisplayUsers();
+                        break;
+                    case 7:
+                        store.RemoveAllUsers();
+                        break;
+                    case 8:
                         isDisplaying = false;
                         break;
                     default:

@@ -11,7 +11,16 @@ namespace person.Classes
         public string studentNumber;
         public string getInfo()
         {
-            return $"Student\n{getFullName()}\n{address.getAddress()}\nNumer studenta: {studentNumber}";
+            if (this.address != null)
+            {
+                return $"Student\n{getFullName()}\n{address.getAddress()}\nNumer studenta: {studentNumber}";
+            }
+            return $"Student\n{getFullName()}\nNumer studenta: {studentNumber}";
+
+        }
+        public Student(string name, string surname, DateTime dateOfBirth, string studentNumber) : base(name, surname, dateOfBirth)
+        {
+            this.studentNumber = studentNumber;
         }
         public Student(string name, string surname, DateTime dateOfBirth, Address address, string studentNumber) : base(name, surname, dateOfBirth, address)
         {

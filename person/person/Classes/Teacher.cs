@@ -15,7 +15,15 @@ namespace person.Classes
         }
         public string getInfo()
         {
-            return $"Nauczyciel\n{getFullName()}\n{address.getAddress()}\nPrzedmioty: {getSubjects()}";
+            if (this.address != null)
+            {
+                return $"Nauczyciel\n{getFullName()}\n{address.getAddress()}\nPrzedmioty: {getSubjects()}";
+            }
+            return $"Nauczyciel\n{getFullName()}\nPrzedmioty: {getSubjects()}";
+        }
+        public Teacher(string name, string surname, DateTime dateOfBirth, List<string> subjects) : base(name, surname, dateOfBirth)
+        {
+            this.subjects = subjects;
         }
         public Teacher(string name, string surname, DateTime dateOfBirth, Address address, List<string> subjects): base(name, surname, dateOfBirth, address)
         {
