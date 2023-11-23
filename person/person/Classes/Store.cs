@@ -43,7 +43,7 @@ namespace person.Classes
             this.users.Clear();
             Console.WriteLine("\nWszyscy użytkownicy zostały usunięci");
         }
-        public void DisplayUsers()
+        public void DisplayUsers(string userType)
         {
             if (users.Count == 0)
             {
